@@ -4,10 +4,21 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 const gallery = document.querySelector(".gallery");
 
+let instance = null;
+
 const markup = galleryItems
   .map(
     (item) =>
-      `<li class="list-item"><img src= ${item.preview} alt= ${item.description} width = 400px ></img></li>`
+      `<li class="gallery__item">
+      <a class="gallery__link" href="">
+        <img
+          class="gallery__image"
+          src= "${item.preview}"
+          data-source="${item.original}"
+          alt="${item.description}"
+        />
+      </a>
+    </li>`
   )
   .join("");
 
