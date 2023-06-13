@@ -24,3 +24,20 @@ const markup = galleryItems
 
 gallery.insertAdjacentHTML("beforeend", markup);
 console.log(gallery);
+
+gallery.addEventListener("click", (event) => {
+  event.preventDefault;
+  const targetImage = galleryItems.find(
+    (item) => item.description === item.target.alt
+  );
+  instance = basicLightbox.create(
+    `<img src=${targetImage.original} width="800" height="600">`
+  );
+  instance.show();
+});
+
+gallery.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    instance.close();
+  }
+});
