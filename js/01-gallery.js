@@ -26,12 +26,9 @@ gallery.insertAdjacentHTML("beforeend", markup);
 console.log(gallery);
 
 gallery.addEventListener("click", (event) => {
-  event.preventDefault;
-  const targetImage = galleryItems.find(
-    (item) => item.description === item.target.alt
-  );
+  event.preventDefault();
   instance = basicLightbox.create(
-    `<img src=${targetImage.original} width="800" height="600">`
+    `<img src=${event.target.dataset.source} width="800" height="600">`
   );
   instance.show();
 });
