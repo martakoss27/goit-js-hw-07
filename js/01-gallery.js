@@ -27,6 +27,7 @@ console.log(gallery);
 
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
+  if (e.target.nodeName !== "IMG") return;
 
   const handleEscape = (event) => {
     if (event.key === "Escape") instance.close();
