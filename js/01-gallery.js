@@ -27,14 +27,20 @@ console.log(gallery);
 
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
+
+  const handleEscape = (event) => {
+    if (event.key === "Escape") instance.close();
+  };
   instance = basicLightbox.create(
-    `<img src=${event.target.dataset.source} width="800" height="600">`
+    `<img src=${event.target.dataset.source} width="800" height="600">`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", handleEscape);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", handleEscape);
+      },
+    }
   );
   instance.show();
-});
-
-gallery.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    instance.close();
-  }
 });
